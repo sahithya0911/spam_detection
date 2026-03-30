@@ -1,0 +1,131 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #ff00fb90, #0072ff);
+    text-align: center;
+}
+
+.container {
+    background:linear-gradient(to left,rgb(144, 210, 144),rgb(221, 221, 119));
+    padding: 60px;
+    margin: 100px auto;
+    width: 400px;
+    border-radius: 10px;
+}
+
+textarea {
+   
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    resize: none; 
+
+}
+
+button {
+    padding: 10px 20px;
+    background: #5366ba6e;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    color: rgba(220, 160, 222, 0.692);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.result.spam {
+    background-color: #ff4d4d; 
+}
+
+.result.safe {
+    background-color: #28a745; 
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.loader {
+    display: none;
+    margin: 20px auto;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #0072ff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+     opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.popup.hide {
+    opacity: 0;
+}
+
+.popup-content {
+    background: rgba(197, 109, 182, 0.803);
+    padding: 20px;
+    margin: 200px auto;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#report-btn {
+    background-color: red;
+    color: white;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Detector</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Spam Detection App</h1>
+
+    <form action="/predict" method="POST">
+        <textarea name="message" placeholder="Enter your message..." required></textarea>
+        <button type="submit">Check</button>
+    </form>
+
+
+<div id="loader" class="loader"></div>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h2 id="popup-text"></h2>
+
+        <div id="actions">
+            <!-- Buttons will change dynamically -->
+        </div>
+    </div>
+</div>
+        
+</div>
+<script>
+
+
+const form = document.querySelector("form");
+const loader = document.getElementById("loader");
+
+form.addEventListener("submit", () => {
+    loader.style.display = "block";
+});
+
+
+
+
+
+
+function closePopup(){
+    const popup = document.getElementById("popup");
+    popup.classList.add("hide");
+
+    setTimeout(() => {
+        popup.style.display = "none";
+        popup.classList.remove("hide");
+    }, 300);
+}
+
+function reportMessage(){
+    alert(" Message reported!");
+    closePopup();
+}
+
+let prediction = "{{ prediction if prediction else '' }}";
+
+if(prediction){
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popup-text");
+    const actions = document.getElementById("actions");
+
+    popup.style.display = "block";
+    text.innerText = "Result: " + prediction;
+
+    
+    actions.innerHTML = "";
+
+    if(prediction === "SPAM"){
+        actions.innerHTML = `
+            <button onclick="reportMessage()">Report</button>
+            <button onclick="closePopup()">Cancel</button>
+        `;
+    } else {
+        
+        actions.innerHTML = `
+            <button onclick="closePopup()">OK</button>
+        `;
+    }
+}
+
+    
+    
+   
+
+</script>
+
+</body>
+</html>
